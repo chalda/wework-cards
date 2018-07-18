@@ -1,28 +1,37 @@
 import * as types from '../actions/types';
 
 const initialState = {
-  teams: [],
-  positions: [],
-  employees: [],
-  isLoading: true
+  deck: null,
+  playerHands: {},
+  isLoading: false,
+  gameStarted: false,
+  playerCount: 2
 };
 
 export default function (state = initialState, action) {
   switch(action.type) {
     case types.NEW_DECK: {
       console.log(action.payload);
+      const playerCount = state.playerCount;
+      const playerHands = {}
+      for(let i=0;i<playerCount;i++){
+        playerHands[i] = [];
+      }
       return {
+        ...state,
         ...action.payload, 
-        isLoading: false
+        gameStarted: true,
+        playerHands
       }
     }
 
-    case types.TEAM_SELECTED: {
-      const teams = [...state.teams];
-      teams.forEach(team => {
-        team.selected = (team.id === action.payload.id ? !team.selected : team.selected);
-      });
-      return {...state, teams};
+    case types.DEAL_CARDS: {
+      const playerHands = {...state.playerHands};
+      const playerCount = state.playerCount;
+      for(let i=0;i<playerCount;i++){
+        playerHands[i].push(action.payload.cards[i]);
+      }
+      return {...state, playerHands};
     }
 
     case types.REMOVE_MEMBER: {
