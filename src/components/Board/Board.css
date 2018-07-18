@@ -1,0 +1,30 @@
+.poker-table {
+    background-image: url('./tsoxa.jpg');
+    background-repeat: repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    height: -webkit-fill-available;
+}
+
+.player-area {
+    height: 100%;
+    padding: 20px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-row {
+    flex-direction: column;
+    width: auto;
+}
+
+.shared-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

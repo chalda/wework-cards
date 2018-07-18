@@ -51,7 +51,9 @@ export default function (state = initialState, action) {
       for(let i=0;i<playerCount;i++){
         playerHands[i].push({ ...action.payload.cards[i], revealed: false});
       }
-      return {...state, playerHands};
+      const deck = {...state.deck};
+      deck.remaining = action.payload.remaining;
+      return {...state, playerHands, deck};
     }
 
     case types.FLIP_CARD: {

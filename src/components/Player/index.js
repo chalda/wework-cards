@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Card from '../Card';
 import _ from 'lodash';
+import './Player.css';
 
 class Player extends Component {
     constructor(props){
@@ -15,15 +16,20 @@ class Player extends Component {
     }
 
     render() {
-        console.log("rendering player", this.props);
         return (
-            <div className="playingCards twoColours rotateHand">
-                <div className="valueCounter">{this.props.handValue}</div>
-                <ul className="hand">
-                    {
-                        this.renderHand()
-                    }
-                </ul>
+            <div className="player">
+                <div className="player-textbackground">
+                    <div className="pull-left player-name">{this.props.dealer?"Dealer":`Player ${this.props.playerId}`}</div>
+                    <div className="pull-right player-score">Score: {this.props.handValue}</div>
+                    <div className="clearfix"/>
+                </div>
+                <div className="playingCards twoColours rotateHand">
+                    <ul className="hand">
+                        {
+                            this.renderHand()
+                        }
+                    </ul>
+                </div>
             </div>
         );
     }

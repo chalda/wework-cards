@@ -1,0 +1,13 @@
+.player-textbackground {
+    background-color: black;
+    opacity: 0.5;
+    color: #fff; 
+    padding: 0.5rem;
+    font-size: 20px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.player-name{
+    margin-right: 10px;
+}

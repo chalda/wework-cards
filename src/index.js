@@ -7,9 +7,9 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-<div>
+<div style={{height: "100%"}}>
     <Provider store={store} >
-    <App />
+        <App />
     </Provider>
 </div>
 , document.getElementById('root'));
