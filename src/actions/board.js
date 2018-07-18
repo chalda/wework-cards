@@ -1,8 +1,5 @@
 import * as types from './types';
 
-console.log(types)
-
-
 const API_URL = "https://deckofcardsapi.com";
 
 export const getNewDeck = () => {
@@ -11,8 +8,9 @@ export const getNewDeck = () => {
     //return fetch(url, options).then(response => response.text());
 
     return dispatch => {
-      fetch(url).then(response => response.json()).then(data => {
-        console.log(data);
+      fetch(url)
+      .then(response => response.json())
+      .then(data => {
         dispatch({
             type: types.NEW_DECK,
             payload: { deck: data }
@@ -28,13 +26,27 @@ export const dealCards = (deck_id, playerCount) => {
   //return fetch(url, options).then(response => response.text());
 
   return dispatch => {
-    fetch(url).then(response => response.json()).then(data => {
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
       dispatch({
           type: types.DEAL_CARDS,
           payload: data
       });
     })
     
+  }
+}
+
+export const flipCard = (playerId, cardIndex) => {
+  return dispatch => {
+    dispatch({
+        type: types.FLIP_CARD,
+        payload: {
+          playerId,
+          cardIndex
+        }
+    })
   }
 }
 

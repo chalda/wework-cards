@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 //<Card value={card.value} suit={card.suit}/>
 
 const suitConvertion = {
-    DIAMOND: "diams",
-    HEARTS: "hearts",
-    SPADES: "spades",
-    CLUBS: "clubs"
+    "DIAMOND": "diams",
+    "HEARTS": "hearts",
+    "SPADES": "spades",
+    "CLUBS": "clubs"
 }
 const valueConvertion = {
     ACE: "a",
@@ -25,15 +25,21 @@ const valueConvertion = {
 }
 
 class Deck extends Component {
-    shouldComponentUpdate(){
-        return true;
-    }
     render() {
         console.log("rendering card", this.props);
+        
+        let className;
+        let onClick = null;
+        if(this.props.revealed){
+            className=`card rank-${valueConvertion[this.props.value]} ${suitConvertion[this.props.suit]}`;
+        } else { 
+            className="card back";
+            onClick=this.flipCard;
+        }
 
         return (
             <li>
-                <div className={`card rank-${valueConvertion[this.props.value]} ${suitConvertion[this.props.suit]}`}/>
+                <div className={className}/>
             </li>
         )
     }
